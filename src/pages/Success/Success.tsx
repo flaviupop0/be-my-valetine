@@ -2,6 +2,7 @@ import { JSX, useEffect } from "react";
 import { Result } from "antd";
 import confetti from "canvas-confetti";
 import { SUCCESS_GIF } from "../../constants";
+import Fireworks from "@fireworks-js/react";
 
 export const Success = (): JSX.Element => {
     useEffect(() => {
@@ -28,7 +29,29 @@ export const Success = (): JSX.Element => {
     }, []);
 
     return (
-        <div className="h-screen flex items-center justify-center bg-red-100">
+        <div className="h-screen flex items-center flex-col justify-center bg-red-100">
+            <Fireworks
+                options={{
+                    rocketsPoint: {
+                        min: 0,
+                        max: 100,
+                    },
+                    explosion: 5,
+                    intensity: 30,
+                    flickering: 50,
+                    lineStyle: "round",
+                    lineWidth: {
+                        explosion: {
+                            min: 2,
+                            max: 4,
+                        },
+                        trace: {
+                            min: 1,
+                            max: 2,
+                        },
+                    },
+                }}
+            />
             <Result
                 status="success"
                 title={
